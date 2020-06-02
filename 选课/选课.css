@@ -1,0 +1,42 @@
+
+*{
+    margin:0;
+    padding:0;
+}
+#title{
+    background:#800;
+    width:100%;
+    height:150px;
+    line-height: 150px;
+    text-align: center;
+    color:white;
+
+}
+#welcome{
+    background:#f5f5f5;
+    width:100%;
+    height:30px;
+    line-height: 30px;
+
+}
+#menu{
+    border:1px solid #aed0ea;
+    width:598px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    margin:0 auto;
+    background-color: #deedf7;
+    border-bottom: 0;
+}
+table{
+    border:1px solid#aed0ea;
+    border-collapse: collapse;
+    width:600px;
+    margin:0 auto;
+}
+td{
+    border:1px solid #aed0ea;
+    text-align: center;
+
+}

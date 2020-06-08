@@ -26,7 +26,15 @@ function addStudentData(){
         var form = document.getElementById('insertdata').getElementsByClassName('form');
         
         for(let i = 0 ; i < form.length ; i++){
+            if(form[i].value.length===0){
+                alert('有空数据，添加失败');
+                return false;
+            }
             value[form[i].name]=form[i].value;
+        }
+        if(!/^\d{1,3}$/.test(form[7].value)||parseInt(form[7].value)<=0){  //排名为1-3位数字
+            alert('排名格式错误,添加失败');
+            return false;
         }
         localStorage.setItem(""+form[0].value+"+"+form[3].value,JSON.stringify(value)); //以学号+课程号作为key
         alert('添加成功');
@@ -47,7 +55,7 @@ function search(){
     search.onclick = function(){
         var gridbody = document.getElementsByClassName('gridbody')[0];
         while(gridbody.hasChildNodes()){
-            gridbody.removeChild(gridbody.firstChild);                 //在搜索前清楚所有表格数据
+            gridbody.removeChild(gridbody.firstChild);                 //在搜索前清除所有表格数据
         }
         var searchNum = document.getElementById('searchNum').value;
         for(let key in localStorage){
@@ -79,7 +87,7 @@ addLoadEvent(search);
 
 
 /*
-***函数功能：为成绩修改按钮绑定点击事件，
+***函数功能：为成绩修改按钮绑定点击事件，修改学生成绩
 ***输入：按钮点击
 ***输出：数据库数据修改
 */
@@ -95,6 +103,10 @@ function changeStudentData(){
         var userNum = form[0].value;
         var number = form[1].value;
         var  score = form[2].value;
+        if(userNum.length===0 || number.length===0 || score.length===0){
+            alert('有空数据，修改失败');
+            return false;
+        }
         for(let key in localStorage){
             var keyArr = key.split('+');
             if(keyArr[0]!==userNum || keyArr[1]!==number)continue;
@@ -104,6 +116,7 @@ function changeStudentData(){
             localStorage.removeItem(key);
             localStorage.setItem(key,JSON.stringify(value));
         }
+        alert('修改成功');
         return false;
         
     }
@@ -120,7 +133,7 @@ function checkData(){
     var form = changeData.getElementsByClassName('form');
     form[0].onblur = function(){
         if(this.value.length===0)return false;   //当输入框没有数据时不提示错误
-        if(!/\d{10}/.test(this.value)){        //学号必须为10位数字
+        if(!/^\d{10}$/.test(this.value)){        //学号必须为10位数字
             alert('学号格式错误');
         }
         return false;
@@ -134,7 +147,7 @@ function checkData(){
     }
     form[2].onblur = function(){
         if(this.value.length===0)return false;
-        if(!/^\d{3}$/.test(this.value)){ 
+        if(!/^\d{1,3}$/.test(this.value)){ 
             alert('成绩格式错误');
         }
         return false;
@@ -143,7 +156,7 @@ function checkData(){
     var form1 = insertData.getElementsByClassName('form');
     form1[0].onblur = function(){
         if(this.value.length===0)return false;
-        if(!/\d{10}/.test(this.value)){ 
+        if(!/^\d{10}$/.test(this.value)){ 
             alert('学号格式错误');
         }
         return false;
@@ -158,7 +171,7 @@ function checkData(){
     }
     form1[2].onblur = function(){
         if(this.value.length===0)return false;
-        if(!/\d{4}[春秋]/.test(this.value)){  //学年学期必须4位数字+春或者夏
+        if(!/^\d{4}[春秋]$/.test(this.value)){  //学年学期必须4位数字+春或者夏
             alert('学年学期格式错误');
         }
         return false;
@@ -180,21 +193,21 @@ function checkData(){
     }
     form1[5].onblur = function(){
         if(this.value.length===0)return false;
-        if(!/\d{1,3}/.test(this.value)){  //成绩为1-3位的数字
+        if(!/^\d{1,3}$/.test(this.value)){  //成绩为1-3位的数字
             alert('成绩格式错误');
         }
         return false;
     }
     form1[6].onblur = function(){
         if(this.value.length===0)return false;
-        if(!/\d+(\.\d+)?/.test(this.value)||parseFloat(this.value)<0||parseFloat(this.value)>10){  //学分在0-10之间的非负浮点数
+        if(!/^\d+(\.\d+)?$/.test(this.value)||parseFloat(this.value)<0||parseFloat(this.value)>10){  //学分在0-10之间的非负浮点数
             alert('学分格式错误');
         }
         return false;
     }
     form1[7].onblur = function(){
         if(this.value.length===0)return false;
-        if(!/^\d{1,3}$/.test(this.value)){  //排名为1-3位数字
+        if(!/^\d{1,3}$/.test(this.value)||parseInt(this.value)<=0){  //排名为1-3位数字
             alert('排名格式错误');
         }
         return false;

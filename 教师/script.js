@@ -120,21 +120,21 @@ function checkData(){
     var form = changeData.getElementsByClassName('form');
     form[0].onblur = function(){
         if(this.value.length===0)return false;   //当输入框没有数据时不提示错误
-        if(this.value.length!==10){        //学号必须为10位
+        if(!/\d{10}/.test(this.value)){        //学号必须为10位数字
             alert('学号格式错误');
         }
         return false;
     }
     form[1].onblur = function(){
         if(this.value.length===0)return false;
-        if(this.value.length!==3){ //课程号必须为3位
+        if(!/^\d{3}$/.test(this.value)){ 
             alert('课程号格式错误');
         }
         return false;
     }
     form[2].onblur = function(){
         if(this.value.length===0)return false;
-        if(this.value.length>3){ //成绩不超过3位
+        if(!/^\d{3}$/.test(this.value)){ 
             alert('成绩格式错误');
         }
         return false;
@@ -143,50 +143,58 @@ function checkData(){
     var form1 = insertData.getElementsByClassName('form');
     form1[0].onblur = function(){
         if(this.value.length===0)return false;
-        if(this.value.length!==10){ 
+        if(!/\d{10}/.test(this.value)){ 
             alert('学号格式错误');
         }
         return false;
     }
     form1[1].onblur = function(){
+        if(this.value.length===0)return false;
+        if(!/^[\u4E00-\u9FA5A-Za-z\s]+(·[\u4E00-\u9FA5A-Za-z]+)*$/.test(this.value)){
+            alert('姓名格式错误');
+        }
         
         return false;
     }
     form1[2].onblur = function(){
         if(this.value.length===0)return false;
-        if(this.value.length!==5){  //学年学期必须大于8位
+        if(!/\d{4}[春秋]/.test(this.value)){  //学年学期必须4位数字+春或者夏
             alert('学年学期格式错误');
         }
         return false;
     }
     form1[3].onblur = function(){
         if(this.value.length===0)return false;
-        if(this.value.length!==3){ //课程号必须为3位
+        if(!/^\d{3}$/.test(this.value)){ //课程号必须为3位数字
             alert('课程号格式错误');
         }
         return false;
     }
     form1[4].onblur = function(){
+        if(this.value.length===0)return false;
+        if(!/^[\u4E00-\u9FA5]{1,15}$/.test(this.value)){ //课程必须为1-15位的中文
+            alert("课程格式错误");
+        }
         return false;
         
     }
     form1[5].onblur = function(){
         if(this.value.length===0)return false;
-        if(this.value.length>3){  //成绩不超过3位
+        if(!/\d{1,3}/.test(this.value)){  //成绩为1-3位的数字
             alert('成绩格式错误');
         }
         return false;
     }
     form1[6].onblur = function(){
         if(this.value.length===0)return false;
-        if(this.value.length>8){  //学分不超过8位
+        if(!/\d+(\.\d+)?/.test(this.value)||parseFloat(this.value)<0||parseFloat(this.value)>10){  //学分在0-10之间的非负浮点数
             alert('学分格式错误');
         }
         return false;
     }
     form1[7].onblur = function(){
         if(this.value.length===0)return false;
-        if(this.value.length>3){  //排名不超过3位
+        if(!/^\d{1,3}$/.test(this.value)){  //排名为1-3位数字
             alert('排名格式错误');
         }
         return false;

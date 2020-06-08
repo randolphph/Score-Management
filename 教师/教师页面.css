@@ -58,9 +58,19 @@ h1{
 .form-control{
     text-align: center;
 }
-.left_box_list{
+.left_box_list1{
     margin-bottom: 10px;;
-    height:100px;
+    height:70px;
+    border: 1px solid #cccccc;
+}
+.left_box_list2{
+    margin-bottom: 10px;;
+    height:120px;
+    border: 1px solid #cccccc;
+}
+.left_box_list3{
+    margin-bottom: 10px;;
+    height:240px;
     border: 1px solid #cccccc;
 }
 button{
@@ -72,10 +82,11 @@ button{
 .left_box{
     width: 200px;
     float: left;
+
 }
 .left_box_title{
-    padding: 10px 10px 10px 10px;
-    height: 30px;
+    padding: 5px 5px 5px 5px;
+    height: 20px;
     line-height: 30px;
     color: #FFFFFF;
     font-size: 16px;
@@ -83,12 +94,13 @@ button{
     background-color: #d23430;
     text-align: center;
 }
-#information{
-    height: 130px;
-}
+
 .form{
     width: 150px;
     margin-left: 25px;
     margin-top:5px;
+}
+.form_format{
+   
 }
 

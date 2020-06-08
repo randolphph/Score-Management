@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>教师</title>
     <link rel="stylesheet" href="教师页面.css" type="text/css">
+    <script src="script.js"></script>
 </head>
 <body>
 <div class="tab">
@@ -13,19 +14,33 @@
 <div class="total">
 <div class="left_box">
     <div class="left_box_title">查询学生成绩</div>
-    <div class="left_box_list">
+    <div class="left_box_list1">
         <form class="form_format">
-            <input type="text" name="username" placeholder="请输入学号" autocomplete="off" class="form">
-            <button type="submit">确定</button>
+            <input type="text" name="username" placeholder="请输入学号" autocomplete="off" class="form" id='searchNum'>
+            <button type="submit" id='search'>确定</button>
         </form>
     </div>
     <div class="left_box_title">修改学生信息</div>
-    <div class="left_box_list">
-        <form class="form_format">
+    <div class="left_box_list2">
+        <form class="form_format" id='change-data'>
             <input type="text" name="username" placeholder="请输入学号" autocomplete="off" class="form">
             <input type="text" name="number" placeholder="请输入修改课程号" autocomplete="off" class="form">
             <input type="text" name="score" placeholder="请输入修改后成绩" autocomplete="off" class="form">
-            <button type="submit">确定</button>
+            <button type="submit" id='change1'>确定</button>
+        </form>
+    </div>
+    <div id='insert' class="left_box_title"> 添加学生数据</div>
+    <div class="left_box_list3">
+        <form class="form_format" id='insertdata'>
+            <input type="text" name="usernum" placeholder="请输入学号" autocomplete="off" class="form">
+            <input type='text'  name='username' placeholder='请输入姓名'  autocomplete="off" class="form">
+            <input type='text'  name='date' placeholder='请输入学年学期'  autocomplete="off" class="form">
+            <input type="text" name="number" placeholder="请输入修改课程号" autocomplete="off" class="form">
+            <input type='text'  name='lesson' placeholder='请输入课程'  autocomplete="off" class="form">
+            <input type="text" name="score" placeholder="请输入修改后成绩" autocomplete="off" class="form">
+            <input type='text'  name='points' placeholder='请输入学分'  autocomplete="off" class="form">
+            <input type='text'  name='rank' placeholder='请输入排名'  autocomplete="off" class="form">
+            <button type="button" id='change2' >确定</button>
         </form>
     </div>
 
@@ -47,26 +62,7 @@
         </tr>
         </thead>
         <tbody class="gridbody">
-        <tr class="form-control">
-            <td>2017111111</td>
-            <td>张三</td>
-            <td>2017-2018秋</td>
-            <td>001</td>
-            <td>高等数学1</td>
-            <td>82</td>
-            <td>4</td>
-            <td>25</td>
-        </tr>
-        <tr class="form-control">
-            <td>2017111111</td>
-            <td>李三</td>
-            <td>2017-2018秋</td>
-            <td>001</td>
-            <td>高等数学1</td>
-            <td>71</td>
-            <td>3.2</td>
-            <td>50</td>
-        </tr>
+        
         </tbody>
     </table>
 </div>
